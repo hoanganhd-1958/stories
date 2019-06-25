@@ -47,7 +47,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <li class="nav-item dropdown show">
                     <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="true">
                         <i class="fas fa-globe-asia"></i>
-                    </a>
+                    </a> thay doi o day
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                         <a href="{{ route('lang', ['lang' => 'vi']) }}" class="dropdown-item">
                             <!-- Message Start -->

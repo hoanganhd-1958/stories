@@ -9,6 +9,7 @@ export default {
         "Create": "Create",
         "Summary": "Summary",
         "Submit": "Submit",
+        "Update": "Update",
         "Story": {
             "Cover Image": "Cover Image",
             "Story Name": "Story Name",
@@ -160,6 +161,7 @@ export default {
         "Create": "Thêm mới",
         "Summary": "Tóm tắt",
         "Submit": "Gửi",
+        "Update": "Cập nhật",
         "Story": {
             "Cover Image": "Ảnh bìa",
             "Story Name": "Tên truyện",

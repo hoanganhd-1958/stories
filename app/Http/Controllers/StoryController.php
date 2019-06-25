@@ -46,7 +46,7 @@ class StoryController extends Controller
     {
         $story = $this->storyRepository->store($request);
         
-        return response()->json(['success' => 'You have successfully upload']);
+        return response()->json(['success' => 'Successfully']);
     }
 
     /**
@@ -84,7 +84,7 @@ class StoryController extends Controller
     {
         $story = $this->storyRepository->update($request, $id);
         
-        return response()->json(['success' => 'You have successfully upload']);
+        return response()->json(['success' => 'Successfully']);
     }
 
     /**

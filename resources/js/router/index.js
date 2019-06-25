@@ -22,6 +22,7 @@ const router = new Router({
                 },
                 {
                     path: 'create',
+                    name: 'story.create',
                     component: StoryForm,
                 },
                 {
