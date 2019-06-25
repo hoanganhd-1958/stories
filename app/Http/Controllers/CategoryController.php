@@ -3,27 +3,28 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Repositories\Contracts\StoryRepositoryInterface;
-use App\Http\Resources\Story as StoryResource;
+use App\Repositories\Contracts\CategoryRepositoryInterface;
+use App\Http\Resources\Category as CategoryResource;
 
-class StoryController extends Controller
+class CategoryController extends Controller
 {
-    protected $storyRepository;
-
-    public function __construct(StoryRepositoryInterface $storyRepository)
-    {
-        $this->storyRepository = $storyRepository;
-    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+    protected $categoryRepository;
+
+    public function __construct(CategoryRepositoryInterface $categoryRepository)
+    {
+        $this->categoryRepository = $categoryRepository;
+    }
+
     public function index()
     {
-        $stories = $this->storyRepository->all();
+        $category = $this->categoryRepository->all();
 
-        return StoryResource::collection($stories);
+        return CategoryResource::collection($category);
     }
 
     /**
@@ -44,9 +45,7 @@ class StoryController extends Controller
      */
     public function store(Request $request)
     {
-        $story = $this->storyRepository->store($request);
-        
-        return response()->json(['success' => 'You have successfully upload']);
+        //
     }
 
     /**
@@ -57,9 +56,7 @@ class StoryController extends Controller
      */
     public function show($id)
     {
-        $story = $this->storyRepository->find($id);
-
-        return new StoryResource($story);
+        //
     }
 
     /**
@@ -82,9 +79,7 @@ class StoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $story = $this->storyRepository->update($request, $id);
-        
-        return response()->json(['success' => 'You have successfully upload']);
+        //
     }
 
     /**

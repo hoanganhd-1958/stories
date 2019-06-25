@@ -13,8 +13,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <meta name="locale" content="{{ App::getLocale() }}" />
 
     <title>{{ __('Website title') }}</title>
-
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    <link rel="stylesheet" href="{{ mix('css/vue-multiselect.min.css') }}">
 
 </head>
 
@@ -103,13 +103,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-                        <li class="nav-item">
-                            <router-link to="/stories" class="nav-link">
-                                <i class="fas fa-book"></i>
+                        <li class="nav-item has-treeview menu-open">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     {{ __('Stories') }}
+                                    <i class="right fas fa-angle-left"></i>
                                 </p>
-                            </router-link>
+                            </a>
+                            <ul class="nav nav-treeview" style="display: block;">
+                                <li class="nav-item">
+                                    <router-link to="/stories/list" class="nav-link">
+                                        <p>{{ __('Lists') }}</p>
+                                    </router-link>
+                                </li>
+                            </ul>
                         </li>
                         <li class="nav-item">
                             <router-link to="/users" class="nav-link">

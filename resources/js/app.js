@@ -9,6 +9,7 @@ require('./bootstrap');
 window.Vue = require('vue');
 import router from './router'
 import i18n from './i18n'
+import store from './store/index'
 
 /**
  * The following block of code may be used to automatically register your
@@ -20,9 +21,6 @@ import i18n from './i18n'
 
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
-
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -32,5 +30,6 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
     router,
-    i18n
+    i18n,
+    store
 });
