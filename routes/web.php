@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('lang/{lang}', 'LangController@changeLang')->name('lang');
 Route::resource('users', 'UserController');
 Route::resource('stories', 'StoryController');
 Route::resource('chapters', 'ChapterController');
