@@ -1,10 +1,28 @@
 export default {
     "en": {
+        "Update": "Update",
         "Admin Panel": "Admin Panel",
         "Welcome message, {name}": "Welcome, {name}",
         "Search": "Search",
         "Stories": "Stories",
         "Users": "Users",
+        "Create": "Create",
+        "Summary": "Summary",
+        "Submit": "Submit",
+        "Story": {
+            "Cover Image": "Cover Image",
+            "Story Name": "Story Name",
+            "Author": "Author",
+            "Total Views": "Total Views",
+            "Modify": "Modify",
+            "Choose File": "Choose image",
+            "Categories": "Categories"
+        },
+        "Category": {
+            "Name": "Category",
+            "Options Selected": "options selected",
+            "Pick One": "Please select at least one category"
+        },
         "pagination": {
             "previous": "&laquo; Previous",
             "next": "Next &raquo;"
@@ -133,10 +151,28 @@ export default {
         }
     },
     "vi": {
+        "Update": "Cập nhật",
         "Admin Panel": "Bảng điều khiển",
         "Welcome message, {name}": "Chào bạn, {name}",
         "Search": "Tìm kiếm",
         "Stories": "Truyện",
-        "Users": "Người dùng"
+        "Users": "Người dùng",
+        "Create": "Thêm mới",
+        "Summary": "Tóm tắt",
+        "Submit": "Gửi",
+        "Story": {
+            "Cover Image": "Ảnh bìa",
+            "Story Name": "Tên truyện",
+            "Author": "Tác giả",
+            "Total Views": "Lượt xem",
+            "Modify": "Chỉnh sửa",
+            "Choose File": "Chọn ảnh",
+            "Categories": "Thể loại"
+        },
+        "Category": {
+            "Name": "Thể loại",
+            "Options Selected": "thể loại đã được lựa chọn",
+            "Pick One": "Vui lòng chọn ít nhất một thể loại"
+        }
     }
 }
