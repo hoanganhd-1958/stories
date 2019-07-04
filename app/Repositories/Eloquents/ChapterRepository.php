@@ -15,6 +15,11 @@ class ChapterRepository implements ChapterRepositoryInterface
         return Chapter::all();
     }
 
+    public function getChapterByStoryId($storyId)
+    {
+        return Chapter::where('story_id', $storyId)->orderBy('posstion', 'DESC')->get();
+    }
+
     public function find($id)
     {
         return Chapter::find($id);
@@ -41,11 +46,14 @@ class ChapterRepository implements ChapterRepositoryInterface
 
     public function sort(Request $request)
     {
-        for ($i = 0; $i <= count((array)$request); $i++) {
+        $numberOfChapters = Chapter::find($request[0]['id'])->story->chapters()->count();
+        $loopCondition = $numberOfChapters;
+        for ($i = 0; $i < $loopCondition; $i++) {
             $chapter = Chapter::findOrFail($request[$i]['id']);
             $chapter->name = $request[$i]['name'];
-            $chapter->posstion = $i;
+            $chapter->posstion = $numberOfChapters;
             $chapter->save();
+            $numberOfChapters--;
         }
 
         return true;

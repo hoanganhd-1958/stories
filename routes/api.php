@@ -20,3 +20,4 @@ Route::resource('stories', 'StoryController');
 Route::resource('categories', 'CategoryController');
 Route::resource('chapters', 'ChapterController');
 Route::post('chapters/sort', 'ChapterController@sort');
+Route::get('chapters/story/{storyId}', 'ChapterController@index');

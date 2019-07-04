@@ -10,6 +10,9 @@ window.Vue = require('vue');
 import router from './router'
 import i18n from './i18n'
 import store from './store/index'
+import _ from "lodash";
+// register lodash global
+Vue.prototype._ = _
 
 /**
  * The following block of code may be used to automatically register your

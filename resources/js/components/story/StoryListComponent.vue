@@ -36,10 +36,11 @@
                                     <th>{{ $t('Story.Story Name') }}</th>
                                     <th>{{ $t('Story.Author') }}</th>
                                     <th>{{ $t('Story.Categories') }}</th>
+                                    <th>{{ $t('Story.Number Of Chapters') }}</th>
                                     <th>{{ $t('Story.Total Views') }}</th>
                                     <th>{{ $t('Story.Modify') }}</th>
                                 </tr>
-                                <tr v-for="story in allStories" :key="story.id">
+                                <tr v-for="story in allStories.data" :key="story.id">
                                     <td>
                                         <img
                                             class="card-body__cover-image"
@@ -58,7 +59,8 @@
                                             :key="id"
                                         >{{ category.name }}</small>
                                     </td>
-                                    <td></td>
+                                    <td>{{ story.total_chapters }}</td>
+                                    <td>{{ story.total_views }}</td>
                                     <td>
                                         <router-link
                                             title="Detail"
@@ -85,19 +87,27 @@
                     <!-- /.card-body -->
                     <div class="card-footer clearfix">
                         <ul class="pagination pagination-sm m-0 float-right">
-                            <li class="page-item">
+                            <li
+                                :class="[{disabled : !pagination.prev_page_url}]"
+                                class="page-item"
+                                @click="fetchStories(pagination.prev_page_url)"
+                            >
                                 <a class="page-link" href="#">«</a>
                             </li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">1</a>
+                            <li
+                                :class="[{disabled : pagination.current_page == page}]"
+                                class="page-item"
+                                v-for="page in pagination.last_page"
+                                :key="page"
+                                @click="fetchStories(`http://localhost:8000/api/stories?page=` + page)"
+                            >
+                                <a class="page-link" href="#">{{ page }}</a>
                             </li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">2</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">3</a>
-                            </li>
-                            <li class="page-item">
+                            <li
+                                class="page-item"
+                                :class="[{disabled : !pagination.next_page_url}]"
+                                @click="fetchStories(pagination.next_page_url)"
+                            >
                                 <a class="page-link" href="#">»</a>
                             </li>
                         </ul>
@@ -111,7 +121,7 @@
 <script>
     import { mapGetters, mapActions } from "vuex";
     export default {
-        computed: mapGetters(["allStories"]),
+        computed: mapGetters(["allStories", "pagination"]),
         methods: {
             ...mapActions(["fetchStories"])
         },
@@ -126,22 +136,27 @@
     }
     #my-table {
         th:first-child {
-            width: 200px;
-        }
-        th:last-child {
             width: 120px;
         }
-    }
-    span.helper {
-        padding: 0px 5px;
-    }
-    .card-body {
-        font-size: 1.1em;
-        &__cover-image {
-            max-width: 100px;
+        #my-table {
+            th:first-child {
+                width: 200px;
+            }
+            th:last-child {
+                width: 120px;
+            }
         }
-        &__badge-primary {
-            margin-right: 5px;
+        span.helper {
+            padding: 0px 5px;
+        }
+        .card-body {
+            font-size: 1.1em;
+            &__cover-image {
+                max-width: 100px;
+            }
+            &__badge-primary {
+                margin-right: 5px;
+            }
         }
     }
 </style>

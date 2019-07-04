@@ -16,4 +16,9 @@ class Chapter extends Model
         'view_count',
         'story_id',
     ];
+
+    public function story()
+    {
+        return $this->belongsTo('App\Models\Story');
+    }
 }

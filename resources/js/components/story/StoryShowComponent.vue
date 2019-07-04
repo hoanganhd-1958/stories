@@ -11,24 +11,17 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-sm-12 col-md-3">
-                                    <img
-                                        class="img-fluid"
-                                        alt="cover_image"
-                                        :src="oneStory.coverImage"
-                                    />
+                                    <StoryCoverImageComponent :imageUrl="oneStory.coverImage"></StoryCoverImageComponent>
                                 </div>
                                 <div class="col-sm-12 col-md-9">
-                                    <h3>{{ $t('Story.Info') }}</h3>
+                                    <h3 class="text-center">{{ oneStory.name }}</h3>
+                                    <hr />
                                     <div class="form-group">
-                                        <span>{{ $t('Story.Name') }}</span>
-                                        <span>{{ oneStory.name }}</span>
+                                        <span class="bold">{{ $t('Story.Summary') }}</span>
+                                        <span class="text-justify">{{ oneStory.summary }}</span>
                                     </div>
                                     <div class="form-group">
-                                        <span>{{ $t('Story.Summary') }}</span>
-                                        <span>{{ oneStory.summary }}</span>
-                                    </div>
-                                    <div class="form-group">
-                                        <span>{{ $t('Category.Name') }}</span>
+                                        <span class="bold">{{ $t('Category.Name') }}</span>:
                                         <small
                                             class="badge badge-primary card-body__badge-primary"
                                             v-for="(category, id) in oneStory.categorySelections"
@@ -40,11 +33,14 @@
                                     <p></p>
                                     <div class="form-group">
                                         <span class="chapter-list">{{ $t('Story.Chapter List') }}</span>
-                                        <button class="btn btn-success" @click="sort()">
+                                        <button class="btn btn-success float-right" @click="sort()">
                                             <i class="fas fa-sort"></i>
                                             {{ $t('Story.Order') }}
                                         </button>
-                                        <button class="btn btn-primary" @click="addChapter()">
+                                        <button
+                                            class="btn btn-primary float-right create-chapter"
+                                            @click="addChapter()"
+                                        >
                                             <i class="fas fa-plus"></i>
                                             {{ $t('Chapter.Create') }}
                                         </button>
@@ -64,12 +60,16 @@
                                             <editable
                                                 :content="element.name"
                                                 @update="element.name = $event"
+                                                class="text-editable"
                                             ></editable>
+                                            <button class="btn btn-danger delete float-right">
+                                                <i class="fa fa-trash"></i>
+                                                {{ $t('Delete') }}
+                                            </button>
                                         </li>
                                     </draggable>
                                 </div>
                             </div>
-                            {{oneStory.chapters}}
                         </div>
                     </div>
                     <!-- /.card-body -->
@@ -83,10 +83,11 @@
     import { mapGetters, mapActions } from "vuex";
     import draggable from "vuedraggable";
     import axios from "axios";
-
+    import StoryCoverImageComponent from "./StoryCoverImageComponent.vue";
     export default {
         components: {
-            draggable
+            draggable,
+            StoryCoverImageComponent
         },
         data() {
             return {};
@@ -115,6 +116,9 @@
     };
 </script>
 <style scoped>
+    .card-body {
+        background: #ecf0f1;
+    }
     .button {
         margin-top: 35px;
     }
@@ -128,5 +132,21 @@
     }
     .chapter-list {
         font-size: 1.6em;
+    }
+    small.badge {
+        margin: 0px 5px;
+    }
+    span.bold {
+        font-weight: bold;
+    }
+    .text-editable {
+        margin: 3px 0px 0px 30px;
+        display: inline-block;
+    }
+    button.delete {
+        display: inline-block;
+    }
+    .create-chapter {
+        margin-right: 10px;
     }
 </style>

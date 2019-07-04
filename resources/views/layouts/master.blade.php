@@ -52,6 +52,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <a href="{{ route('lang', ['lang' => 'vi']) }}" class="dropdown-item">
                             <!-- Message Start -->
                             <div class="media">
+                                <img src="{{ config('my.ensign_of_vn') }}" alt="">
                                 <div class="media-body">
                                     <h3 class="dropdown-item-title">
                                         {{ __('Vietnamese') }}
@@ -64,6 +65,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <a href="{{ route('lang', ['lang' => 'en']) }}" class="dropdown-item">
                             <!-- Message Start -->
                             <div class="media">
+                                <img src="{{ config('my.ensign_of_us') }}" alt="">
                                 <div class="media-body">
                                     <h3 class="dropdown-item-title">
                                         {{ __('English') }}

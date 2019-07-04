@@ -18,6 +18,6 @@ class Story extends Model
 
     public function chapters()
     {
-        return $this->hasMany('App\Models\Chapter')->orderBy('posstion');
+        return $this->hasMany('App\Models\Chapter')->orderBy('posstion', 'DESC');
     }
 }

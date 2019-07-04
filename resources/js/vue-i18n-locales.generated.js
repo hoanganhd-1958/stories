@@ -9,6 +9,7 @@ export default {
         "Create": "Create",
         "Summary": "Summary",
         "Submit": "Submit",
+        "Delete": "Delete",
         "Story": {
             "Cover Image": "Cover Image",
             "Story Name": "Story Name",
@@ -21,7 +22,8 @@ export default {
             "Chapter List": "Chapter List",
             "Summary": "Summary: ",
             "Name": "Story name: ",
-            "Order": "Update changes"
+            "Order": "Update changes",
+            "Number Of Chapters": "Number Of Chapters"
         },
         "Chapter": {
             "Create": "Create chapter",
@@ -169,6 +171,7 @@ export default {
         "Create": "Thêm mới",
         "Summary": "Tóm tắt",
         "Submit": "Gửi",
+        "Delete": "Xóa",
         "Story": {
             "Cover Image": "Ảnh bìa",
             "Story Name": "Tên truyện",
@@ -181,7 +184,8 @@ export default {
             "Chapter List": "Danh sách chương",
             "Summary": "Tóm tắt truyện: ",
             "Name": "Tên truyện: ",
-            "Order": "Cập nhật thay đổi"
+            "Order": "Cập nhật thay đổi",
+            "Number Of Chapters": "Số lượng chương"
         },
         "Chapter": {
             "Create": "Thêm chương",

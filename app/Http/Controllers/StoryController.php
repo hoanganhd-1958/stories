@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\OneStory as OneStoryResource;
 use Illuminate\Http\Request;
 use App\Repositories\Contracts\StoryRepositoryInterface;
 use App\Http\Resources\Story as StoryResource;
@@ -21,7 +22,7 @@ class StoryController extends Controller
      */
     public function index()
     {
-        $stories = $this->storyRepository->all();
+        $stories = $this->storyRepository->paginate(config('my.paginate'));
 
         return StoryResource::collection($stories);
     }
@@ -59,7 +60,7 @@ class StoryController extends Controller
     {
         $story = $this->storyRepository->find($id);
 
-        return new StoryResource($story);
+        return new OneStoryResource($story);
     }
 
     /**

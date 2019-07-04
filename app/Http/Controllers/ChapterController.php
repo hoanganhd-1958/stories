@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Repositories\Contracts\ChapterRepositoryInterface;
+use App\Http\Resources\Chapter as ChapterResource;
 
 class ChapterController extends Controller
 {
@@ -18,9 +19,11 @@ class ChapterController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($storyId)
     {
-        //
+        $chapters = $this->chapterRepository->getChapterByStoryId($storyId);
+
+        return ChapterResource::collection($chapters);
     }
 
     /**

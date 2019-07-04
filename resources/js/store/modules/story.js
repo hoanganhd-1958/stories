@@ -15,13 +15,15 @@ const state = {
         coverImage: null,
         categorySelections: [],
         chapters: [],
-    }
+    },
+    pagination: {}
 }
 
 // getters
 const getters = {
     allStories: (state) => state.stories,
-    oneStory: (state) => state.story
+    oneStory: (state) => state.story,
+    pagination: (state) => state.pagination,
 }
 
 // actions
@@ -37,9 +39,11 @@ const actions = {
         );
         const response = await axios.post(STORY_API, data, this.config)
     },
-    async fetchStories({ commit }) {
-        const response = await axios.get(STORY_API)
+    async fetchStories({ commit }, pageUrl) {
+        pageUrl = pageUrl || STORY_API
+        const response = await axios.get(pageUrl)
         commit('setStories', response.data)
+        commit('setPagination', response.data)
     },
     async fetchOneStory({ commit }, storyId) {
         const response = await axios.get(STORY_API + `/${storyId}`)
@@ -78,6 +82,17 @@ const mutations = {
         state.story.summary = null
         state.story.coverImage = null
         state.story.categorySelections = []
+    },
+    setPagination: (state, story) => {
+        let pagination = {
+            current_page: story.meta.current_page,
+            last_page: story.meta.last_page,
+            next_page_url: story.links.next,
+            prev_page_url: story.links.prev,
+            current_page: story.meta.current_page,
+            last_page: story.meta.last_page
+        }
+        state.pagination = pagination
     }
 }
 
