@@ -15,4 +15,9 @@ class Story extends Model
     {
         return $this->belongsToMany('App\Models\Category');
     }
+
+    public function chapters()
+    {
+        return $this->hasMany('App\Models\Chapter')->orderBy('posstion');
+    }
 }
