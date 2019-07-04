@@ -18,3 +18,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::resource('stories', 'StoryController');
 Route::resource('categories', 'CategoryController');
+Route::resource('chapters', 'ChapterController');

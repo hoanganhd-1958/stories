@@ -41,7 +41,9 @@ class ChapterController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $chapter = $this->chapterRepository->store($request);
+        
+        return response()->json(['success' => 'You have successfully upload']);
     }
 
     /**
