@@ -9,6 +9,7 @@ let config = {
 const state = {
     stories: [],
     story: {
+        id: null,
         name: null,
         summary: null,
         coverImage: null,
@@ -65,6 +66,7 @@ const actions = {
 const mutations = {
     setStories: (state, stories) => { state.stories = stories },
     setOneStory: (state, story) => {
+        state.story.id = story.id
         state.story.name = story.name
         state.story.summary = story.summary
         state.story.coverImage = story.cover_image

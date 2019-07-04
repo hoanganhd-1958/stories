@@ -21,7 +21,11 @@ export default {
             "Chapter List": "Chapter List",
             "Summary": "Summary: ",
             "Name": "Story name: ",
-            "Order": "Reorder chap"
+            "Order": "Update changes"
+        },
+        "Chapter": {
+            "Create": "Create chapter",
+            "Name": "Chapter name"
         },
         "Category": {
             "Name": "Category",
@@ -177,7 +181,11 @@ export default {
             "Chapter List": "Danh sách chương",
             "Summary": "Tóm tắt truyện: ",
             "Name": "Tên truyện: ",
-            "Order": "Cập nhật thứ tự"
+            "Order": "Cập nhật thay đổi"
+        },
+        "Chapter": {
+            "Create": "Thêm chương",
+            "Name": "Tên chương"
         },
         "Category": {
             "Name": "Thể loại",

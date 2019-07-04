@@ -109,39 +109,39 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
-export default {
-    computed: mapGetters(["allStories"]),
-    methods: {
-        ...mapActions(["fetchStories"])
-    },
-    created() {
-        this.fetchStories();
-    }
-};
+    import { mapGetters, mapActions } from "vuex";
+    export default {
+        computed: mapGetters(["allStories"]),
+        methods: {
+            ...mapActions(["fetchStories"])
+        },
+        created() {
+            this.fetchStories();
+        }
+    };
 </script>
 <style lang="scss" scoped>
-.search {
-    width: 150px;
-}
-#my-table {
-    th:first-child {
-        width: 200px;
+    .search {
+        width: 150px;
     }
-    th:last-child {
-        width: 120px;
+    #my-table {
+        th:first-child {
+            width: 200px;
+        }
+        th:last-child {
+            width: 120px;
+        }
     }
-}
-span.helper {
-    padding: 0px 5px;
-}
-.card-body {
-    font-size: 1.1em;
-    &__cover-image {
-        max-width: 100px;
+    span.helper {
+        padding: 0px 5px;
     }
-    &__badge-primary {
-        margin-right: 5px;
+    .card-body {
+        font-size: 1.1em;
+        &__cover-image {
+            max-width: 100px;
+        }
+        &__badge-primary {
+            margin-right: 5px;
+        }
     }
-}
 </style>

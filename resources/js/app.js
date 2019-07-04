@@ -27,6 +27,25 @@ import store from './store/index'
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+/**
+ * hmm This component use to real time edit text in line
+ * idea like jQuery.editable use html attributes contenteditable
+ * register here
+ * use everywhere (thatlatuyetvoi) 
+ */
+Vue.component("editable", {
+    template: '<div contenteditable="true" @input="update"></div>',
+    props: ["content"],
+    mounted: function () {
+        this.$el.innerText = this.content;
+    },
+    methods: {
+        update: function (event) {
+            this.$emit("update", event.target.innerText);
+        }
+    }
+});
+
 const app = new Vue({
     el: '#app',
     router,

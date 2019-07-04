@@ -82,6 +82,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="" class="brand-link">
+                <img src="{{ config('my.logo') }}" alt="Logo" class="brand-image">
                 <span class="brand-text font-weight-light">{{ __('Admin Panel') }}
                 </span>
             </a>
@@ -90,6 +91,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="sidebar">
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                    <div class="image">
+                        <img src="{{ config('my.avatar') }}" class="img-circle elevation-2" alt="User Image">
+                    </div>
                     <div class="info">
                         <a href="" class="d-block">
                             {{ __('Welcome message, :name', ['name' => 'Current logged in user name']) }}
@@ -111,7 +115,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
-                            <ul class="nav nav-treeview" style="display: block;">
+                            <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <router-link to="/stories/list" class="nav-link">
                                         <p>{{ __('Lists') }}</p>

@@ -11,3 +11,17 @@ $fa-font-path: "../webfonts";
 @import "~@fortawesome/fontawesome-free/scss/fontawesome.scss";
 @import "~@fortawesome/fontawesome-free/scss/solid.scss";
 @import "~@fortawesome/fontawesome-free/scss/brands.scss";
+
+//my style
+#app{
+    nav.main-header{
+        background-image: url('/storage/image/co-dai.jpg');
+        background-position: 100% 0%;
+    }
+    img.brand-image{
+        opacity: .8;
+    }
+    ul.nav-treeview{
+        display: block;
+    }
+} 
