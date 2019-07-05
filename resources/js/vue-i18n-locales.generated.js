@@ -16,7 +16,12 @@ export default {
             "Total Views": "Total Views",
             "Modify": "Modify",
             "Choose File": "Choose image",
-            "Categories": "Categories"
+            "Categories": "Categories",
+            "Info": "Story info",
+            "Chapter List": "Chapter List",
+            "Summary": "Summary: ",
+            "Name": "Story name: ",
+            "Order": "Reorder chap"
         },
         "Category": {
             "Name": "Category",
@@ -167,7 +172,12 @@ export default {
             "Total Views": "Lượt xem",
             "Modify": "Chỉnh sửa",
             "Choose File": "Chọn ảnh",
-            "Categories": "Thể loại"
+            "Categories": "Thể loại",
+            "Info": "Thông tin truyện",
+            "Chapter List": "Danh sách chương",
+            "Summary": "Tóm tắt truyện: ",
+            "Name": "Tên truyện: ",
+            "Order": "Cập nhật thứ tự"
         },
         "Category": {
             "Name": "Thể loại",

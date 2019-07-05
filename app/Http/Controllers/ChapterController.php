@@ -47,6 +47,19 @@ class ChapterController extends Controller
     }
 
     /**
+    * reOrder possiton
+    *
+    * @param  \Illuminate\Http\Request  $request
+    * @return \Illuminate\Http\Response
+    */
+    public function sort(Request $request)
+    {
+        $chapter = $this->chapterRepository->sort($request);
+        
+        return response()->json(['success' => 'You have successfully upload']);
+    }
+
+    /**
      * Display the specified resource.
      *
      * @param  int  $id

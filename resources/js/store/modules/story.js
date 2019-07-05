@@ -13,6 +13,7 @@ const state = {
         summary: null,
         coverImage: null,
         categorySelections: [],
+        chapters: [],
     }
 }
 
@@ -34,7 +35,6 @@ const actions = {
             JSON.stringify(state.story.categorySelections)
         );
         const response = await axios.post(STORY_API, data, this.config)
-        console.log(response);
     },
     async fetchStories({ commit }) {
         const response = await axios.get(STORY_API)
@@ -42,7 +42,6 @@ const actions = {
     },
     async fetchOneStory({ commit }, storyId) {
         const response = await axios.get(STORY_API + `/${storyId}`)
-        console.log(response.data)
         commit('setOneStory', response.data)
     },
     clearState(context) {
@@ -70,6 +69,7 @@ const mutations = {
         state.story.summary = story.summary
         state.story.coverImage = story.cover_image
         state.story.categorySelections = story.categories
+        state.story.chapters = story.chapters
     },
     clearStoryState: (state) => {
         state.story.name = null

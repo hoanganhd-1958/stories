@@ -5,6 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Resources\Json\JsonResource;
 use App\Http\Resources\User as UserResource;
 use App\Http\Resources\Category as CategoryResource;
+use App\Http\Resources\Chapter as ChapterResource;
 use App\Models\User;
 
 class Story extends JsonResource
@@ -24,6 +25,7 @@ class Story extends JsonResource
             'cover_image' => config('my.image_path') . $this->cover_image,
             'author' => new UserResource($this->user),
             'categories' => CategoryResource::collection($this->categories),
+            'chapters' => ChapterResource::collection($this->chapters),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];

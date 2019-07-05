@@ -39,4 +39,15 @@ class ChapterRepository implements ChapterRepositoryInterface
             ]);
         }
     }
+
+    public function sort(Request $request)
+    {
+        for ($i = 0; $i <= count((array)$request); $i++) {
+            $chapter = Chapter::findOrFail($request[$i]['id']);
+            $chapter->posstion = $i;
+            $chapter->save();
+        }
+
+        return true;
+    }
 }

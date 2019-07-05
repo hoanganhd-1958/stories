@@ -9,4 +9,5 @@ interface ChapterRepositoryInterface
     public function all();
     public function find($id);
     public function store(Request $request);
+    public function sort(Request $request);
 }
