@@ -71,43 +71,43 @@
 </template>
 
 <script>
-import Multiselect from "vue-multiselect";
-import { mapGetters, mapActions } from "vuex";
-export default {
-    components: { Multiselect },
-    data() {
-        return {
-            editMode: false
-        };
-    },
-    computed: mapGetters(["allCategories", "oneStory"]),
-    methods: {
-        ...mapActions([
-            "fetchCategories",
-            "newStory",
-            "fetchOneStory",
-            "clearState",
-            "updateStory"
-        ]),
-        onFileSelected(e) {
-            this.oneStory.coverImage = event.target.files[0];
+    import Multiselect from "vue-multiselect";
+    import { mapGetters, mapActions } from "vuex";
+    export default {
+        components: { Multiselect },
+        data() {
+            return {
+                editMode: false
+            };
         },
-        addStory() {
-            this.newStory();
+        computed: mapGetters(["allCategories", "oneStory"]),
+        methods: {
+            ...mapActions([
+                "fetchCategories",
+                "newStory",
+                "fetchOneStory",
+                "clearState",
+                "updateStory"
+            ]),
+            onFileSelected(e) {
+                this.oneStory.coverImage = event.target.files[0];
+            },
+            addStory() {
+                this.newStory();
+            },
+            editStory() {
+                this.updateStory(this.$route.params.storyId);
+            }
         },
-        editStory() {
-            this.updateStory(this.$route.params.storyId);
+        created() {
+            if (typeof this.$route.params.storyId !== "undefined") {
+                let response = this.fetchOneStory(this.$route.params.storyId);
+                this.name = response.name;
+                this.editMode = true;
+            } else {
+                this.clearState();
+            }
+            this.fetchCategories();
         }
-    },
-    created() {
-        if (typeof this.$route.params.storyId !== "undefined") {
-            let response = this.fetchOneStory(this.$route.params.storyId);
-            this.name = response.name;
-            this.editMode = true;
-        } else {
-            this.clearState();
-        }
-        this.fetchCategories();
-    }
-};
+    };
 </script>

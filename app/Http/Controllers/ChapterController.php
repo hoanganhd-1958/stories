@@ -43,7 +43,7 @@ class ChapterController extends Controller
     {
         $chapter = $this->chapterRepository->store($request);
         
-        return response()->json(['success' => 'You have successfully upload']);
+        return response()->json(['success' => 'You have successfully upload'], 200);
     }
 
     /**
@@ -56,7 +56,7 @@ class ChapterController extends Controller
     {
         $chapter = $this->chapterRepository->sort($request);
         
-        return response()->json(['success' => 'You have successfully upload']);
+        return response()->json(['success' => 'You have successfully upload'], 200);
     }
 
     /**

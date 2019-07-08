@@ -5,6 +5,7 @@ namespace App\Repositories\Eloquents;
 use Illuminate\Http\Request;
 use Artisan;
 use App\Models\Chapter;
+use App\Models\Story as Story;
 use App\Repositories\Contracts\ChapterRepositoryInterface;
 
 class ChapterRepository implements ChapterRepositoryInterface
@@ -21,22 +22,20 @@ class ChapterRepository implements ChapterRepositoryInterface
 
     public function store(Request $request)
     {
-        if ($request->mode == Chapter::CRAWL_MODE) {
-            Artisan::call('crawl:start', [
-                'name' => $request->name,
-                'url' => $request->url,
-                'storyId' => $request->story_id,
-                'posstion' => $request->posstion,
+        if ($request->has('story_id')) {
+            $story = Story::findOrFail($request->story_id);
+            $lastestPosstion = $story->chapters->pluck('posstion')->max();
+        
+            Chapter::create([
+            'name' => 'New Chapter',
+            'content' => '',
+            'publish' => false,
+            'posstion' => $lastestPosstion + 1,
+            'view_count' => 0,
+            'story_id' => $request->story_id,
             ]);
         } else {
-            Chapter::create([
-                'name' => $request->name,
-                'content' => $request->content,
-                'publish' => false,
-                'posstion' => $request->posstion,
-                'view_count' => 0,
-                'story_id' => $request->story_id,
-            ]);
+            return false;
         }
     }
 
@@ -44,6 +43,7 @@ class ChapterRepository implements ChapterRepositoryInterface
     {
         for ($i = 0; $i <= count((array)$request); $i++) {
             $chapter = Chapter::findOrFail($request[$i]['id']);
+            $chapter->name = $request[$i]['name'];
             $chapter->posstion = $i;
             $chapter->save();
         }
