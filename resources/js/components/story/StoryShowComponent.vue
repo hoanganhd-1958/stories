@@ -66,6 +66,53 @@
                                                 <i class="fa fa-trash"></i>
                                                 {{ $t('Delete') }}
                                             </button>
+                                            <router-link
+                                                :to="{ name: 'chapter.edit', params: { chapterId: element.id }}"
+                                                role="button"
+                                                v-if="element.has_content"
+                                                class="btn btn-info float-right margin-right-5px"
+                                            >
+                                                <i class="fa fa-pen"></i>
+                                                {{ $t('Story.Edit content') }}
+                                            </router-link>
+                                            <div
+                                                class="dropdown float-right margin-right-5px"
+                                                v-else
+                                            >
+                                                <button
+                                                    class="btn btn-primary dropdown-toggle"
+                                                    type="button"
+                                                    id="dropdownMenuButton"
+                                                    data-toggle="dropdown"
+                                                    aria-haspopup="true"
+                                                    aria-expanded="false"
+                                                >
+                                                    <i class="fas fa-plus"></i>
+                                                    {{ $t('Story.Add content') }}
+                                                </button>
+                                                <div
+                                                    class="dropdown-menu"
+                                                    aria-labelledby="dropdownMenuButton"
+                                                >
+                                                    <router-link
+                                                        :to="{ name: 'chapter.edit', params: { chapterId: element.id }}"
+                                                        class="dropdown-item"
+                                                    >{{ $t('Story.Composed') }}</router-link>
+                                                    <a
+                                                        @click="setChapterId(element.id)"
+                                                        data-toggle="modal"
+                                                        data-target="#modal"
+                                                        role="button"
+                                                        class="dropdown-item"
+                                                        href="#"
+                                                    >{{ $t('Story.From Another Source') }}</a>
+                                                </div>
+                                            </div>
+                                            <ChapterDraftComponent
+                                                v-if="!element.publish && element.has_content"
+                                                class="float-right"
+                                                :content="$t('Chapter.Draft')"
+                                            ></ChapterDraftComponent>
                                         </li>
                                     </draggable>
                                 </div>
@@ -73,6 +120,44 @@
                         </div>
                     </div>
                     <!-- /.card-body -->
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div
+            class="modal fade"
+            id="modal"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5
+                            class="modal-title"
+                            id="exampleModalLabel"
+                        >{{ $t('Story.From Another Source') }}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <input
+                            type="text"
+                            class="form-control"
+                            :placeholder="$t('Story.Demo link')"
+                            v-model="anotherSourceUrl"
+                        />
+                    </div>
+                    <div class="modal-footer">
+                        <button
+                            type="button"
+                            class="btn btn-primary"
+                            @click="getContentFromAnotherSource()"
+                        >{{ $t('Submit') }}</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -84,19 +169,25 @@
     import draggable from "vuedraggable";
     import axios from "axios";
     import StoryCoverImageComponent from "./StoryCoverImageComponent.vue";
+    import ChapterDraftComponent from "../chapter/ChapterDraftComponent.vue";
     export default {
         components: {
             draggable,
-            StoryCoverImageComponent
+            StoryCoverImageComponent,
+            ChapterDraftComponent
         },
         data() {
-            return {};
+            return {
+                anotherSourceUrl: null,
+                chapterId: null
+            };
         },
         computed: mapGetters(["oneStory"]),
         methods: {
             ...mapActions(["fetchOneStory"]),
-            sort() {
-                axios.post(`api/chapters/sort`, this.oneStory.chapters);
+            async sort() {
+                await axios.post(`api/chapters/sort`, this.oneStory.chapters);
+                this.$swal.fire("Success!", "Update successful", "success");
             },
             addChapter() {
                 axios.post(`api/chapters`, {
@@ -108,6 +199,16 @@
                     story_id: this.$route.params.storyId
                 });
                 this.fetchOneStory(this.$route.params.storyId);
+            },
+            setChapterId(chapterId) {
+                this.chapterId = chapterId;
+            },
+            async getContentFromAnotherSource() {
+                await axios.post(`api/chapters/get-content-from-another-source`, {
+                    id: this.chapterId,
+                    url: this.anotherSourceUrl
+                });
+                this.fetchOneStory(this.$route.params.storyId);
             }
         },
         created() {
@@ -116,6 +217,9 @@
     };
 </script>
 <style scoped>
+    .margin-right-5px {
+        margin-right: 5px;
+    }
     .card-body {
         background: #ecf0f1;
     }

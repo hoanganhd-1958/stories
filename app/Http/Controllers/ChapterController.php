@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Repositories\Contracts\ChapterRepositoryInterface;
 use App\Http\Resources\Chapter as ChapterResource;
+use App\Http\Resources\OneChapter as OneChapterResource;
 
 class ChapterController extends Controller
 {
@@ -70,7 +71,9 @@ class ChapterController extends Controller
      */
     public function show($id)
     {
-        //
+        $chapter = $this->chapterRepository->find($id);
+        
+        return new OneChapterResource($chapter);
     }
 
     /**
@@ -93,7 +96,9 @@ class ChapterController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $chapter = $this->chapterRepository->update($request, $id);
+        
+        return response()->json(['success' => 'You have successfully update'], 200);
     }
 
     /**
@@ -105,5 +110,30 @@ class ChapterController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Update chapter content by crawl from another source.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function getContentFromAnotherSource(Request $request)
+    {
+        $chapter = $this->chapterRepository->getContentFromAnotherSource($request);
+        
+        return response()->json(['success' => 'You have successfully update'], 200);
+    }
+
+    /**
+    * Publish chapter.
+    *
+    * @param  int  $id
+    */
+    public function publish($id)
+    {
+        $chapter = $this->chapterRepository->publish($id);
+        
+        return response()->json(['success' => 'You have successfully update'], 200);
     }
 }

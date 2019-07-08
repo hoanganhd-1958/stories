@@ -58,4 +58,30 @@ class ChapterRepository implements ChapterRepositoryInterface
 
         return true;
     }
+
+    public function getContentFromAnotherSource(Request $request)
+    {
+        if ($request->has('id') && $request->has('url')) {
+            Artisan::call('crawl:start', [
+                'id' => $request->id,
+                'url' => $request->url,
+            ]);
+        } else {
+            return false;
+        }
+    }
+
+    public function update(Request $request, $id)
+    {
+        Chapter::findOrFail($id)->update(['content' => $request->content]);
+
+        return true;
+    }
+
+    public function publish($id)
+    {
+        Chapter::findOrFail($id)->update(['publish' => true]);
+
+        return true;
+    }
 }

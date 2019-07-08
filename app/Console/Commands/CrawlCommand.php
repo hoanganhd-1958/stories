@@ -13,7 +13,7 @@ class CrawlCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'crawl:start {name} {url} {storyId} {posstion}';
+    protected $signature = 'crawl:start {id} {url}';
 
     /**
      * The console command description.
@@ -46,14 +46,7 @@ class CrawlCommand extends Command
             array_push($content, '<p>' . $node->text() . '</p>');
         });
 
-        Chapter::create([
-            'name' => $this->argument('name'),
-            'content' => implode(' ', $content),
-            'publish' => false,
-            'posstion' => $this->argument('posstion'),
-            'view_count' => 0,
-            'story_id' => $this->argument('storyId'),
-        ]);
+        Chapter::findOrFail($this->argument('id'))->update(['content' => implode(' ', $content)]);
 
         return true;
     }

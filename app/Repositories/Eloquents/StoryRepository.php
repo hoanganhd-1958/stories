@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Story;
 use App\Repositories\Contracts\StoryRepositoryInterface;
 use App\Http\Traits\FileUpload;
+use Auth;
 
 class StoryRepository implements StoryRepositoryInterface
 {
@@ -23,7 +24,7 @@ class StoryRepository implements StoryRepositoryInterface
 
     public function paginate($number)
     {
-        return Story::paginate($number);
+        return Story::where('user_id', Auth::id())->paginate($number);
     }
 
     public function store(Request $request)

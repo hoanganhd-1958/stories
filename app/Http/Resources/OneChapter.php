@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class Chapter extends JsonResource
+class OneChapter extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -20,7 +20,8 @@ class Chapter extends JsonResource
             'publish' => $this->publish,
             'posstion' => $this->posstion,
             'view_count' => $this->view_count,
-            'has_content' => $this->content == null ? false : true,
+            'content' => $this->content,
+            'story' => $this->story->name,
         ];
     }
 }

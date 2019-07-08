@@ -2,7 +2,7 @@ import axios from "axios";
 const STORY_API = `api/stories`
 let config = {
     header: {
-        'Content-Type': 'multipart/form-data'
+        'Content-Type': 'multipart/form-data',
     }
 }
 // initial state

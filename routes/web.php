@@ -10,5 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/', function () {
+    return view('layouts.master');
+});
 Route::get('lang/{lang}', 'LangController@changeLang')->name('lang');
+Route::get('/{any?}', function () {
+    return view('welcome');
+})->where('any', '^(?!api\/)[\/\w\.-]*');

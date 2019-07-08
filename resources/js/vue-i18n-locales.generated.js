@@ -23,11 +23,19 @@ export default {
             "Summary": "Summary: ",
             "Name": "Story name: ",
             "Order": "Update changes",
-            "Number Of Chapters": "Number Of Chapters"
+            "Number Of Chapters": "Number Of Chapters",
+            "Edit content": "Edit content",
+            "Add content": "Add content",
+            "Composed": "Composed",
+            "From Another Source": "From Another Source",
+            "Demo link": "Example https://truyenyy.com/truyen/ta-la-chi-ton-dich/chuong-1.html"
         },
         "Chapter": {
             "Create": "Create chapter",
-            "Name": "Chapter name"
+            "Name": "Chapter name",
+            "Draft": "draft",
+            "Save": "Save",
+            "Publish": "Publish"
         },
         "Category": {
             "Name": "Category",
@@ -185,11 +193,19 @@ export default {
             "Summary": "Tóm tắt truyện: ",
             "Name": "Tên truyện: ",
             "Order": "Cập nhật thay đổi",
-            "Number Of Chapters": "Số lượng chương"
+            "Number Of Chapters": "Số lượng chương",
+            "Edit content": "Sửa nội dung",
+            "Add content": "Thêm nội dung",
+            "Composed": "Tự sáng tác",
+            "From Another Source": "Từ nguồn khác",
+            "Demo link": "Ví dụ https://truyenyy.com/truyen/ta-la-chi-ton-dich/chuong-1.html"
         },
         "Chapter": {
             "Create": "Thêm chương",
-            "Name": "Tên chương"
+            "Name": "Tên chương",
+            "Draft": "bản nháp",
+            "Save": "Lưu",
+            "Publish": "Xuất bản"
         },
         "Category": {
             "Name": "Thể loại",

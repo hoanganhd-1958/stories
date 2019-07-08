@@ -11,9 +11,21 @@ import router from './router'
 import i18n from './i18n'
 import store from './store/index'
 import _ from "lodash";
+import VueSweetalert2 from 'vue-sweetalert2';
+
 // register lodash global
 Vue.prototype._ = _
 
+import CKEditor from '@ckeditor/ckeditor5-vue';
+Vue.use(CKEditor);
+Vue.use(VueSweetalert2);
+
+axios.interceptors.request.use(function (config) {
+    const token = localStorage.getItem("token");
+    config.headers.Authorization = 'Bearer ' + token;
+
+    return config;
+});
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

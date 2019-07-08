@@ -17,6 +17,7 @@
         "martinlindhe/laravel-vue-i18n-generator": "^0.1.39",
         "spatie/laravel-permission": "^2.37",
         "spatie/laravel-tags": "2.2.2",
+        "tymon/jwt-auth": "dev-develop",
         "willvincent/laravel-rateable": "^1.07"
     },
     "require-dev": {
