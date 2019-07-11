@@ -1,5 +1,5 @@
 <template>
-    <div class="card">
+    <div class="card col-md-4 offset-md-4 mt-5">
         <div class="card-body login-card-body">
             <p class="login-box-msg">Sign in to start your session</p>
             <div class="alert alert-danger" v-if="error">
@@ -77,12 +77,16 @@
         methods: {
             async login() {
                 var app = this;
-                var token = await axios.post("api/login", {
-                    email: this.email,
-                    password: this.password
-                });
-                localStorage.setItem("token", token.data.access_token);
-                this.$router.push("stories/list");
+                try {
+                    const response = await axios.post("api/login", {
+                        email: this.email,
+                        password: this.password
+                    });
+                    localStorage.setItem("token", response.data.access_token);
+                    this.$router.push("stories/list");
+                } catch (error) {
+                    app.error = true;
+                }
             }
         }
     };

@@ -212,7 +212,9 @@
             }
         },
         created() {
+            this.$Progress.start();
             this.fetchOneStory(this.$route.params.storyId);
+            this.$Progress.finish();
         }
     };
 </script>

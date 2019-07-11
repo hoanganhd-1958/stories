@@ -12,21 +12,12 @@ import LoginApp from '../components/authentication/Login'
 import Register from '../components/authentication/Register.vue';
 import Login from '../components/authentication/Login.vue';
 import { checkToken } from '../helper/local-storage'
-import Main from '../components/main/Main.vue';
-import Dashboard from '../components/main/Dashboard.vue';
 
 Vue.use(Router)
 
 const router = new Router({
     linkActiveClass: 'active',
     routes: [
-        {
-            path: '/',
-            component: LoginApp,
-            meta: {
-                auth: false
-            }
-        },
         {
             path: '/register',
             name: 'register',
