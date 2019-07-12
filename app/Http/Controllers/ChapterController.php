@@ -13,6 +13,7 @@ class ChapterController extends Controller
 
     public function __construct(ChapterRepositoryInterface $chapterRepository)
     {
+        $this->middleware('auth:api');
         $this->chapterRepository = $chapterRepository;
     }
     /**

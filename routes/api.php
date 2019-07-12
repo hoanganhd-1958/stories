@@ -27,18 +27,12 @@ Route::group([
     Route::post('refresh', 'AuthController@refresh');
     Route::post('me', 'AuthController@me');
 });
-Route::group([
-
-    'middleware' => 'auth:api',
-
-], function ($router) {
-    Route::resource('categories', 'CategoryController');
-    Route::resource('stories', 'StoryController');
-    Route::resource('chapters', 'ChapterController');
-    Route::prefix('chapters')->group(function () {
-        Route::post('sort', 'ChapterController@sort');
-        Route::get('story/{storyId}', 'ChapterController@index');
-        Route::post('get-content-from-another-source', 'ChapterController@getContentFromAnotherSource');
-        Route::get('{id}/publish', 'ChapterController@publish');
-    });
+Route::resource('categories', 'CategoryController');
+Route::resource('stories', 'StoryController');
+Route::resource('chapters', 'ChapterController');
+Route::prefix('chapters')->group(function () {
+    Route::post('sort', 'ChapterController@sort');
+    Route::get('story/{storyId}', 'ChapterController@index');
+    Route::post('get-content-from-another-source', 'ChapterController@getContentFromAnotherSource');
+    Route::get('{id}/publish', 'ChapterController@publish');
 });

@@ -58,9 +58,15 @@
                 </button>
                 <div class="dropdown-content">
                     <div class="grid-container">
-                        <div class="grid-item">
+                        <div
+                            class="grid-item"
+                            v-for="(category, index) in listCategory"
+                            :key="index"
+                        >
                             <a href>
-                                <h3 class="header-sub pl-2">Ngôn Tình (3657)</h3>
+                                <h3
+                                    class="header-sub pl-2"
+                                >{{ category.name }} ({{ category.story_count }})</h3>
                             </a>
                         </div>
                     </div>
@@ -77,5 +83,21 @@
 </template>
 
 <script>
-    export default {};
+    import { mapGetters, mapActions } from "vuex";
+
+    export default {
+        computed: {
+            ...mapGetters({
+                listCategory: "getListCategory"
+            })
+        },
+        methods: {
+            ...mapActions({
+                fetchListCategory: "fetchListCategory"
+            })
+        },
+        mounted() {
+            this.fetchListCategory();
+        }
+    };
 </script>
