@@ -63,11 +63,13 @@
                             v-for="(category, index) in listCategory"
                             :key="index"
                         >
-                            <a href>
+                            <nuxt-link
+                                :to="{ name: 'category-categoryId', params: { categoryId: category.id }}"
+                            >
                                 <h3
                                     class="header-sub pl-2"
                                 >{{ category.name }} ({{ category.story_count }})</h3>
-                            </a>
+                            </nuxt-link>
                         </div>
                     </div>
                 </div>

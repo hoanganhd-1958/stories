@@ -36,3 +36,6 @@ Route::prefix('chapters')->group(function () {
     Route::post('get-content-from-another-source', 'ChapterController@getContentFromAnotherSource');
     Route::get('{id}/publish', 'ChapterController@publish');
 });
+Route::prefix('categories')->group(function () {
+    Route::get('{categoryId}/story', 'CategoryController@getAllStoryInCategory');
+});

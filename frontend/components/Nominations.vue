@@ -2,7 +2,7 @@
     <div>
         <h3 class="header-title">
             Truyện được đề cử
-            <i class="fa fa-gift" aria-hidden="true"></i>
+            <i class="fa fa-gift" aria-hidden="true"></i> (đang xây dựng)
         </h3>
         <div class="row list-recommend-book">
             <div class="col col-md-4 col-sm-6 col-6">

@@ -1,7 +1,7 @@
 <template>
     <div>
         <h3 class="header-title">
-            <i class="fa fa-line-chart" aria-hidden="true"></i> Thịnh hành
+            <i class="fa fa-line-chart" aria-hidden="true"></i> Thịnh hành (đang xây dựng)
         </h3>
         <div class="menu-block">
             <ol class="list-group list-group-flush">

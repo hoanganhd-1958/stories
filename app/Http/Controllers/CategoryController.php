@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Repositories\Contracts\CategoryRepositoryInterface;
 use App\Http\Resources\Category as CategoryResource;
+use App\Http\Resources\Story as StoryResource;
 
 class CategoryController extends Controller
 {
@@ -17,7 +18,7 @@ class CategoryController extends Controller
 
     public function __construct(CategoryRepositoryInterface $categoryRepository)
     {
-        $this->middleware('auth:api', ['except' => ['index']]);
+        $this->middleware('auth:api', ['except' => ['index', 'show', 'getAllStoryInCategory']]);
         $this->categoryRepository = $categoryRepository;
     }
 
@@ -57,7 +58,9 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        $category = $this->categoryRepository->find($id);
+
+        return new CategoryResource($category);
     }
 
     /**
@@ -92,5 +95,12 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function getAllStoryInCategory($categoryId)
+    {
+        $stories = $this->categoryRepository->getAllStoryInCategory($categoryId);
+
+        return StoryResource::collection($stories);
     }
 }

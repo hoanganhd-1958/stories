@@ -13,7 +13,7 @@ class StoryController extends Controller
 
     public function __construct(StoryRepositoryInterface $storyRepository)
     {
-        $this->middleware('auth:api');
+        $this->middleware('auth:api', ['except' => ['show']]);
         $this->storyRepository = $storyRepository;
     }
     /**

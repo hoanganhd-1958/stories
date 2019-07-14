@@ -11,7 +11,7 @@
                     aria-controls="profile"
                     aria-selected="false"
                 >
-                    <strong>Truyện mới</strong>
+                    <strong>Truyện mới (đang xây dựng)</strong>
                 </a>
             </li>
         </ul>

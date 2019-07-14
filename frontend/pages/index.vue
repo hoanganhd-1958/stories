@@ -2,6 +2,7 @@
     <div class="container">
         <Header />
         <div class="content">
+            <br />
             <Nominations />
             <div class="row">
                 <div class="col col-md-8 col-12">
