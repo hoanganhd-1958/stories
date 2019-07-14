@@ -2,7 +2,6 @@
     <div class="container">
         <Header />
         <div class="content">
-            <Breadcrumb />
             <StoryList :categoryId="this.$route.params.categoryId" />
         </div>
         <Footer />

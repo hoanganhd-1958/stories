@@ -1,6 +1,6 @@
 <template>
     <div class>
-        <div class="row list-recommend-book">
+        <div class="row list-recommend-book" style="padding-top:25px">
             <div
                 class="col col-md-4 col-sm-6 col-6"
                 v-for="(story, index) in listStory"

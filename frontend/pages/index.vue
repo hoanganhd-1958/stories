@@ -6,7 +6,6 @@
             <Nominations />
             <div class="row">
                 <div class="col col-md-8 col-12">
-                    <ReadingStory />
                     <NewStory />
                 </div>
                 <div class="col col-md-4 col-12">

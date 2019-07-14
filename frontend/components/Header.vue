@@ -50,7 +50,8 @@
             </div>
         </nav>
         <div class="topnav" id="myTopnav">
-            <a href class="active-nav">Trang chủ</a>
+            <nuxt-link class="active-nav" to="/">Trang chủ</nuxt-link>
+
             <div class="dropdown">
                 <button class="dropbtn">
                     Thể loại

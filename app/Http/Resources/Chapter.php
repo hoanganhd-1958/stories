@@ -21,6 +21,7 @@ class Chapter extends JsonResource
             'posstion' => $this->posstion,
             'view_count' => $this->view_count,
             'has_content' => $this->content == null ? false : true,
+            'created_at' => $this->created_at->format('d/m/Y')
         ];
     }
 }

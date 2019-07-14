@@ -1,48 +1,27 @@
 <template>
     <div>
-        <h1
-            class="header-title"
-            style="text-align: center; margin-top: 25px;"
-        >Mục lục : Mao Sơn Tróc Quỷ Nhân</h1>
-        <h2 class="header-sub">Trang 1 | phần 1 - 75 / 1234 phần</h2>
+        <h1 class="header-title" style="text-align: center; padding-top: 25px;">Mục lục</h1>
         <div class="row p-2 block-list-chapters">
-            <div class="chapter-col col-xs-12 col-sm-6 col-md-4">
+            <div class="chapter-col col-xs-12 col-sm-6 col-md-4" v-for="index in 3" :key="index">
                 <ul class="list-chapter">
-                    <li>
-                        <a
-                            rel="nofollow"
-                            title=" Chương 1: Mẫu Tử Sát Thi"
-                            href="chuong-1-mau-tu-sat-thi/15727.html"
+                    <li v-for="(chapter, id) in chunkedItems[index-1]" :key="id">
+                        <nuxt-link
+                            :to="{ name: 'chap-chapId', params: { chapId: chapter.id }}"
+                            :title="chapter.name"
                         >
                             <div class="header-sub entry-title">
-                                <span>Chương 1: Mẫu Tử Sát Thi</span>
+                                <span>{{ chapter.name }}</span>
                             </div>
                             <div class="byline">
-                                <i class="fa fa-eye"></i> 84 lượt xem
+                                <i class="fa fa-eye"></i>
+                                {{ chapter.view_count }} lượt xem
                                 -
                                 <i
                                     class="fa fa-clock-o"
-                                ></i> 03/08/2017
+                                ></i>
+                                {{ chapter.created_at }}
                             </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            rel="nofollow"
-                            title=" Chương 2: Khai Quan"
-                            href="chuong-2-khai-quan/15728.html"
-                        >
-                            <div class="header-sub entry-title">
-                                <span>Chương 2: Khai Quan</span>
-                            </div>
-                            <div class="byline">
-                                <i class="fa fa-eye"></i> 25 lượt xem
-                                -
-                                <i
-                                    class="fa fa-clock-o"
-                                ></i> 03/08/2017
-                            </div>
-                        </a>
+                        </nuxt-link>
                     </li>
                 </ul>
             </div>
@@ -51,7 +30,37 @@
 </template>
 
 <script>
-    export default {};
+    import { mapGetters, mapActions } from "vuex";
+    import _ from "lodash";
+
+    export default {
+        props: ["storyId", "storyName"],
+        computed: {
+            ...mapGetters({
+                listChapter: "getListChapterInStory"
+            }),
+            chunkedItems() {
+                return _.chunk(_.toArray(this.listChapter.data), 25);
+            }
+        },
+        methods: {
+            ...mapActions({
+                fetchListChapterInStory: "fetchListChapterInStory"
+            }),
+
+            async getStoryName() {
+                var response = await this.axios.get(
+                    "http:://localhost/8000/api/stories/" +
+                        this.$route.params.storyId
+                );
+                return response.data;
+            }
+        },
+        mounted() {
+            this.fetchListChapterInStory(this.storyId);
+        },
+        created() {}
+    };
 </script>
 
 <style>

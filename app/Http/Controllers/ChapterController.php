@@ -13,7 +13,7 @@ class ChapterController extends Controller
 
     public function __construct(ChapterRepositoryInterface $chapterRepository)
     {
-        $this->middleware('auth:api', ['except' => ['show']]);
+        $this->middleware('auth:api', ['except' => ['index', 'show']]);
         $this->chapterRepository = $chapterRepository;
     }
     /**

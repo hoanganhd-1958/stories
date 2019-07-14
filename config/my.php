@@ -8,4 +8,5 @@ return [
     'ensign_of_us' => '/storage/image/US.png',
     'ensign_of_vn' => '/storage/image/VN.png',
     'paginateStoryList' => '9',
+    'pagiChapList' => '75',
 ];

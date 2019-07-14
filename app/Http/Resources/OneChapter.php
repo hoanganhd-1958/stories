@@ -17,11 +17,11 @@ class OneChapter extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'story_name' => $this->story->name,
             'publish' => $this->publish,
             'posstion' => $this->posstion,
             'view_count' => $this->view_count,
             'content' => $this->content,
-            'story' => $this->story->name,
         ];
     }
 }

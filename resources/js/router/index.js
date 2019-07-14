@@ -18,6 +18,7 @@ Vue.use(Router)
 const router = new Router({
     linkActiveClass: 'active',
     routes: [
+        { path: '/', redirect: { name: 'login' } },
         {
             path: '/register',
             name: 'register',

@@ -6,9 +6,17 @@
                 <span>Trang chủ</span>
             </a>
         </li>
+        <span v-if="categoryId !== null">
+            <li class="breadcrumb-item">
+                <a :href=" 'http://localhost:3000/category/' + categoryId">
+                    <span>{{ categoryName }}</span>
+                </a>
+            </li>
+        </span>
+
         <li class="breadcrumb-item">
-            <a :href=" 'http://localhost:3000/category/' + categoryId">
-                <span>{{ categoryName }}</span>
+            <a :href=" 'http://localhost:3000/story/' + storyId">
+                <span>{{ storyName }}aa</span>
             </a>
         </li>
     </ol>
@@ -19,7 +27,9 @@
     export default {
         props: {
             categoryName: null,
-            categoryId: null
+            categoryId: null,
+            storyName: null,
+            storyId: null
         },
         methods: {
             async getCategoryInfo() {
@@ -32,7 +42,9 @@
             }
         },
         created() {
-            this.getCategoryInfo();
+            if (!this.$route.params.categoryId == "undefined") {
+                this.getCategoryInfo();
+            }
         }
     };
 </script>

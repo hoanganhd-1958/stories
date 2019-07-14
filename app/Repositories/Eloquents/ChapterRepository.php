@@ -17,7 +17,7 @@ class ChapterRepository implements ChapterRepositoryInterface
 
     public function getChapterByStoryId($storyId)
     {
-        return Chapter::where('story_id', $storyId)->orderBy('posstion', 'DESC')->get();
+        return Chapter::where('story_id', $storyId)->where('publish', true)->orderBy('posstion', 'DESC')->paginate(config('my.pagiChapList'));
     }
 
     public function find($id)
