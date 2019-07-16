@@ -99,7 +99,7 @@
                                 class="page-item"
                                 v-for="page in pagination.last_page"
                                 :key="page"
-                                @click="fetchStories(`http://localhost:8000/api/stories?page=` + page)"
+                                @click="fetchStories(`/api/stories?page=` + page)"
                             >
                                 <a class="page-link" href="#">{{ page }}</a>
                             </li>
