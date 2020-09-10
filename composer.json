@@ -16,8 +16,7 @@
         "laravelista/comments": "^2.1",
         "martinlindhe/laravel-vue-i18n-generator": "^0.1.39",
         "spatie/laravel-permission": "^2.37",
-        "spatie/laravel-tags": "2.2.2",
-        "willvincent/laravel-rateable": "^1.07"
+        "spatie/laravel-tags": "2.2.2"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
