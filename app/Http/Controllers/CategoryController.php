@@ -45,7 +45,16 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $array = [
+            1,
+            2,
+            3,
+            4.4,
+            5,
+            6,
+            7,
+            7,
+        ];
     }
 
     /**
