@@ -53,7 +53,7 @@ class CategoryController extends Controller
             5,
             6,
             7,
-            7,
+            7
         ];
     }
 
